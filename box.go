@@ -85,8 +85,8 @@ func (b *box) SumArea() float64 {
 func (b *box) RemoveAllCircles() error {
 	e := errorCirclesNotFound
 	for i, s := range b.shapes {
-		switch s.(type) {
-		case Circle:
+		_, ok := s.(Circle)
+		if ok {
 			b.ExtractByIndex(i)
 			e = nil
 		}
